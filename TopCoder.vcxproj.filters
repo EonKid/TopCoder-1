@@ -16,11 +16,17 @@
     <Filter Include="Source Files\SRM 618">
       <UniqueIdentifier>{e5e9a2ee-ce30-4d4a-a446-2a128f4f8024}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\TCO 2014 Round 1C %28Incomplete%29">
-      <UniqueIdentifier>{21e214bd-5367-441e-9fce-a558441c99a9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\SRM 619 %28Incomplete%29">
       <UniqueIdentifier>{13af0743-b286-49ed-a61d-52def1daed9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TCO 2014 Round 2A %28Incomplete%29">
+      <UniqueIdentifier>{afb5f010-8491-49a5-8a7c-eb3c9f4517bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SRM 620 %28Incomplete%29">
+      <UniqueIdentifier>{8a183fa2-2cf5-4374-b6c1-b415dc88382d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TCO 2014 Round 1C %28Incomplete%29">
+      <UniqueIdentifier>{21e214bd-5367-441e-9fce-a558441c99a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,12 +39,6 @@
     <ClCompile Include="SRM 618\MovingRooksDiv1.cpp">
       <Filter>Source Files\SRM 618</Filter>
     </ClCompile>
-    <ClCompile Include="Single Round Match 619\SplitStoneGame.cpp">
-      <Filter>Source Files\SRM 619 %28Incomplete%29</Filter>
-    </ClCompile>
-    <ClCompile Include="Single Round Match 619\GoodCompanyDivOne.cpp">
-      <Filter>Source Files\SRM 619 %28Incomplete%29</Filter>
-    </ClCompile>
     <ClCompile Include="TCO 2014 Round 1C\FizzBuzzTurbo.cpp">
       <Filter>Source Files\TCO 2014 Round 1C %28Incomplete%29</Filter>
     </ClCompile>
@@ -47,6 +47,18 @@
     </ClCompile>
     <ClCompile Include="TCO 2014 Round 1C\Unique.cpp">
       <Filter>Source Files\TCO 2014 Round 1C %28Incomplete%29</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 619\SplitStoneGame.cpp">
+      <Filter>Source Files\SRM 619 %28Incomplete%29</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 619\GoodCompanyDivOne.cpp">
+      <Filter>Source Files\SRM 619 %28Incomplete%29</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 620\PairGame.cpp">
+      <Filter>Source Files\SRM 620 %28Incomplete%29</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 2A\SixteenBricks.cpp">
+      <Filter>Source Files\TCO 2014 Round 2A %28Incomplete%29</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

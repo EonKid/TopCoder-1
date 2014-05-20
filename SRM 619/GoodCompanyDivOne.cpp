@@ -20,6 +20,8 @@ public:
 	int nCourse;
 
 	int C[MAXN][MAXM], mx[MAXN], my[MAXM], lx[MAXN], ly[MAXM];
+	int ar[MAXN][MAXN][MAXN];
+
 	int cx[MAXN], cy[MAXM];
 
 	bool Path(int nGraph, int u)
@@ -84,49 +86,62 @@ public:
 	vector<vector<int> > child;
 	int nEmployee;
 
-	long long dp[50][50];
+	int dp[50][50];
 
-	long long foo(int root, int course)
+	int foo(int root, int course)
 	{
 		if (dp[root][course] != -1) return dp[root][course];
 
-		memset(C, 0, sizeof(C));
+		for (int i = 0; i < max(nEmployee, nCourse); i++)
+			for (int j = 0; j < max(nEmployee, nCourse); j++)
+				ar[root][i][j] = -10000;
 
-		for (int i = 0; i < nCourse; i++)
-		{
-			C[root][i] = training[i];
-		}
-
+		ar[root][root][course] = training[course];
 		int nChild = (int)child[root].size();
 		for (int i = 0; i < nChild; i++)
 			for (int j = 0; j < nCourse; j++)
 			{
-				int minCourseVal = 2147483647;
+				if (j == course) continue;
+
+				int maxval = 0;
 				for (int k = 0; k < nCourse; k++)
 				{
-					if (k == course || k == j) continue;
-					if (training[k] < minCourseVal)
-						minCourseVal = training[k];
+					if (k == j) continue;
+					if (training[k] > maxval)
+						maxval = training[k];
 				}
 
-				C[child[root][i]][j] = foo(child[root][i], j) + minCourseVal;
+				int val = foo(child[root][i], j);
+				if (val != 0)
+					ar[root][child[root][i]][j] = foo(child[root][i], j) + maxval;
 			}
 
-		Solve(nEmployee);
+		memcpy(C, ar[root], sizeof(ar[root]));
+		Solve(max(nEmployee, nCourse));
 
-		int ret = 0;
+		int ret = training[course];
 		bool unmatched = false;
-		for (int i = 0; i < nEmployee; i++)
-			if (cx[i] == -1) unmatched = true;
+		
+		for (int i = 0; i < nChild; i++)
+		{
+			int node = child[root][i];
+			if (C[node][cx[node]] == -10000)
+			{
+				//printf("%d %d %d %d\n", node, cx[node], C[node][cx[node]], root);
+				unmatched = true;
+			}
+			ret += C[node][cx[node]];
+		}
+
 		if (!unmatched)
 		{
-			for (int i = 0; i < nEmployee; i++)
-				ret += C[i][cx[i]];
+			//printf("root = %d, course = %d, ret = %d\n", root, course, ret);
 			return dp[root][course] = ret;
 		}
 		else
 		{
-			return dp[root][course] = 2147483647;
+			//printf("root = %d, course = %d, unmatched\n", root, course);
+			return dp[root][course] = 0;
 		}
 	}
 
@@ -134,20 +149,29 @@ public:
 	{
 		memset(dp, -1, sizeof(dp));
 		superior = _superior;
-		training = _training;
 		nEmployee = (int)superior.size();
-		nCourse = (int)training.size();
+		nCourse = (int)_training.size();
+		training.clear(); 
+		for (int i = 0; i < nCourse; i++)
+			training.push_back(101 - _training[i]);
+
+		child.clear();
 		child.resize(nEmployee);
 		for (int i = 1; i < (int)superior.size(); i++)
 			child[superior[i]].push_back(i);
 
-		int ret = 2147483647;
+		int ret = 0;
 		for (int i = 0; i < nCourse; i++)
-			if (foo(0, i) < ret)
-				ret = foo(0, i);
-		
-		if (ret < 2147483647)
-			return ret;
+		{
+			int maxval = 0;
+			for (int j = 0; j < nCourse; j++)
+				if (training[j] > maxval && j != i)
+					maxval = training[j];
+			if (foo(0, i) + maxval > ret && foo(0, i) != 0)
+				ret = foo(0, i) + maxval;
+		}
+		if (ret != 0)
+			return 2 * nEmployee * 101 - ret;
 		return -1;
 	}
 };
