@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TopCoder SRM 623 - 450: CatchTheBeat</title>
+    
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.topcoder.com/i/favicon.ico"/>
+    
+
+    
+    <style type="text/css">
+        /* font */
+body {
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.2em;
+}
+ul.constraints > li:before, ul.notes > li:before {
+    font-family: monospace;
+    font-weight: normal;
+}
+.heading {
+    font-weight: bold;
+    font-size: 175%;
+    line-height: 1.2em;
+}
+.section .section-title {
+    font-weight: bold;
+    font-size: 125%;
+}
+ol.testcases > li:before {
+    font-family: monospace;
+}
+type {
+    font-weight: bold;
+    font-family: monospace;
+}
+li.testcase .data {
+    font-family: monospace;
+    line-height: 1.5em;
+}
+
+/* layout */
+.heading {
+    margin-top: 0.1em;
+    margin-bottom:0.1em;
+    text-align: center;
+}
+.section .section-title {
+    margin-top : 1em;
+    margin-bottom: 1em;
+}
+.problem-intro, note, user-constraint {
+    padding-left: 1.25em;
+}
+
+/* Lists */
+ul.constraints, ul.notes, ul.variables, ul.problem-definition-lines {
+    list-style-type: none;
+    padding: 0px;
+}
+ul.constraints > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+ul.notes > li:before {
+    content: "-";
+    position:relative;
+    margin-left: 0px; /* optional, for multiline li element */
+    left: 0.625em;
+}
+
+/* Testcases */
+li.testcase {
+    line-height: 1.1em;
+    padding-top: 0.625em;
+    padding-bottom: 0.625em;
+    overflow: auto;
+}
+li.testcase > .testcase-content > div { padding-bottom: 0.5em; padding-left: 1em; }
+
+li.testcase .testcase-comment {
+    margin: 0;
+    padding-left: 1em;
+}
+.testcase-comment p:first-child { margin-top: 0; }
+.testcase-comment p:last-child { margin-bottom: 0; }
+
+li.testcase .testcase-content {
+    margin: 0.31em;
+}
+
+/* Data and variables */
+.testcase-output {
+    padding: 0.2em 1em 0.2em 0em;
+}
+.variables, .testcase-output {
+    margin-left: 0.5em;
+    display: table;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.variable {
+    display: table-row;
+}
+.variable .name {
+    padding: 0.2em 0em 0.2em 1em;
+    font-weight: bold;
+    display: table-cell;
+    text-align: right;
+}
+.testcase-output .prefix {
+    padding: 0.2em 0em 0.2em 1em;
+    display: table-cell;
+}
+.testcase-output .prefix:after {
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .name:after {
+    font-weight: bold;
+    content : ":";
+    padding-right: 0.5em;
+}
+.variable .value, .testcase-output .value {
+    padding: 0.2em 1em 0.2em 0em;
+    display: table-cell;
+}
+ol.testcases {
+    padding: 0px;
+    counter-reset: test_number -1;
+}
+ol.testcases > li {
+    list-style:none;
+}
+ol.testcases > li:before {
+    counter-increment:test_number;
+    display: block;
+    clear: both;
+    content:counter(test_number) ")";
+    color: inherit;
+    background: inherit;
+}
+
+/* Problem Definition */
+.problem-definition, .problem-limits {
+    padding-left: 1.25em;
+}
+.problem-definition-lines, .limit-lines {
+    display: table;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+.definition-line, .limit-line {
+    display: table-row;
+    height: 1.5em;
+    overflow: auto;
+}
+.limit-name:after {
+    content: ":";
+    margin-right: 1em;
+}
+.definition-name, .definition-value, .limit-name, .limit-value {
+    display: table-cell;
+}
+.definition-value {
+    padding-left: 0.5em;
+}
+.definition-name:after {
+    content: ":";
+}
+#contest-division:before {
+    content: "Div ";
+}
+#problem-score:before {
+    content: "- Problem ";
+}
+#problem-name {
+    display: block;
+}
+
+/* Tags, hidden default */
+.tag {
+    visibility: hidden;
+    position: absolute;
+}
+
+        body {
+    /* font color */
+    color: #333333;
+    /* background color */
+    background-color: white;
+}
+.section .section-title {
+    /* title color */
+    color: black;
+}
+li.testcase .data {
+    /* highlight color */
+    background: #eee;
+}
+
+    </style>
+    
+    
+    
+
+</head>
+
+<body>
+    <h1 class="heading">
+        <span id='contest-name'>SRM 623</span>
+        <span id='contest-division'>1</span>
+        <span id='problem-score'>450</span>
+        <span id='problem-name'>CatchTheBeat</span>
+    </h1>
+
+    <hr />
+
+    <!-- Problem Statement -->
+    <div class="section">
+        <h2 class="section-title">Problem Statement</h2>
+        <div class="problem-intro">
+            <intro escaped="1">One of the modes in the game &quot;osu!&quot; is called &quot;catch the beat&quot;.
+In this mode, you control a character that catches falling fruit.
+<br />
+<br />
+<br />
+The game is played in the vertical plane.
+For simplicity, we will assume that both your character and all pieces of fruit are points in that plane.
+<br />
+<br />
+<br />
+You start the game at the coordinates (0, 0).
+Your character can only move along the x-axis.
+The maximum speed of your character is 1 unit of distance per second.
+For example, you need at least 3 seconds to move from (-2, 0) to (1, 0).
+<br />
+<br />
+<br />
+There are <b>n</b> pieces of fruit.
+The pieces are numbered 0 through <b>n</b>-1.
+For each i, fruit i starts at (x[i], y[i]).
+All pieces of fruit fall down with constant speed of 1 unit of distance per second.
+That is, a fruit currently located at (xf, yf) will move to (xf, yf-t) in t seconds.
+You will catch a fruit if the character is located at the same point as the fruit at some moment in time.
+<br />
+<br />
+<br />
+The initial coordinates x[] and y[] are generated using the following pseudocode:
+<br />
+<br />
+<pre>
+x[0] = <b>x0</b>
+for i = 1 to <b>n</b>-1:
+    x[i] = (x[i-1] * <b>a</b> + <b>b</b>) % <b>mod1</b>
+
+for i = 0 to <b>n</b>-1:
+    x[i] = x[i] - <b>offset</b>
+
+y[0] = <b>y0</b>
+for i = 1 to <b>n</b>-1:
+    y[i] = (y[i-1] * <b>c</b> + <b>d</b>) % <b>mod2</b>
+</pre>
+(In the pseudocode, '%' represents the 'modulo' operator.)
+<br />
+<br />
+You are given all the <type>int</type>s used in the above pseudocode.
+Return the maximum number of pieces of fruit you can catch.</intro>
+        </div>
+    </div>
+    
+    <!-- Problem definition -->
+    
+    <div class="section" id="definition">
+        <h2 class="section-title">Definition</h2>
+        <div class="problem-definition">
+            <ul class="problem-definition-lines">
+                <li class="definition-line" id='class-line'>
+                    <span class='definition-name'>Class</span>
+                    <span class='definition-value'>CatchTheBeat</span>
+                </li>
+                <li class="definition-line" id='method-line'>
+                    <span class='definition-name'>Method</span>
+                    <span class='definition-value'>maxCatched</span>
+                </li>
+                <li class="definition-line" id='parameters-line'>
+                    <span class='definition-name'>Parameters</span>
+                    <span class='definition-value'>
+                    
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    , 
+                        int
+                    
+                    </span>
+                </li>
+                <li class="definition-line" id='returns-line'>
+                    <span class='definition-name'>Returns</span>
+                    <span class='definition-value'>
+                        int
+                    </span>
+                </li>
+                <li class="definition-line" id='signature-line'>
+                    <span class='definition-name'>Method signature</span>
+                    <span class='definition-value'>
+                        int maxCatched(int n, int x0, int y0, int a, int b, int c, int d, int mod1, int mod2, int offset)
+                    </span>
+                </li>
+            </ul>
+            <div class="problem-definition-public-tip">(be sure your method is public)</div>
+        </div>        
+    </div>
+    
+
+    <!-- Limits -->
+    <div class="section">
+        <h2 class="section-title">Limits</h2>
+        <div class='problem-limits'>
+            <ul class="limit-lines">
+                <li class='limit-line'>
+                    <span class='limit-name'>Time limit (s)</span>
+                    <span class='limit-value'>2.000</span>
+                </li>
+                <li class='limit-line'>
+                    <span class='limit-name'>Memory limit (MB)</span>
+                    <span class='limit-value'>256</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    
+    <!-- Constraints -->
+    <div class="section">
+        <h2 class="section-title">Constraints</h2>
+        <ul class="constraints">
+        
+            <li><user-constraint escaped="1"><b>n</b> will be between 1 and 500,000, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1"><b>mod1</b> and <b>mod2</b> will be between 1 and 1,000,000,000, inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1"><b>x0</b>, <b>a</b> and <b>b</b> will be between 0 and (<b>mod1</b> - 1), inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1"><b>y0</b>, <b>c</b> and <b>d</b> will be between 0 and (<b>mod2</b> - 1), inclusive.</user-constraint></li>
+        
+            <li><user-constraint escaped="1"><b>offset</b> will be between 0 and 1,000,000,000, inclusive.</user-constraint></li>
+        
+        </ul>
+    </div>
+
+    <!-- Test cases -->
+    <div class="section">
+        <h2 class="section-title">Test cases</h2>
+        <ol class="testcases" start='0'>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    3
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    100
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    100
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            2
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">There are 3 pieces of fruit.
+Their initial coordinates are (-1, 0), (0, 1), and (1, 2).
+Clearly you cannot catch fruit 0.
+You can catch the other two.
+One way of doing so:
+<ol>
+<li>Wait at (0, 0) for 1 second.</li>
+<li>Catch fruit 1.</li>
+<li>Move to (1, 0) in 1 second.</li>
+<li>Immediately catch fruit 2.</li>
+</ol></div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    1234
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    1000
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            1
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">The only fruit is located at (-1000, 1234). We can go to (-1000, 0) and then wait for 234 seconds to catch it.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    999
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    1000
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            0
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">Now the only fruit is located at (-1000, 999). We can't catch it.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    100
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    3
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    58585858
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            66
+                        
+                        </span>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    500000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    123456
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    1000000000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            376544
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">The fruits are located in (123456, 0), (123456, 1), ..., (123456, 499999).</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    500000
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    1
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    0
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            500000
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">In this case all the fruits start at (0, 0).
+Note that there can be more than one fruit at any position.
+We can catch all such fruit at the same time.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+            <li class="testcase">
+                <div class="testcase-content">
+                    <div class="testcase-input">
+                        <div class='tag'>input</div>
+                        <ul class="variables">
+                        
+                            <li class="variable data">
+                                <span class="name data">n</span>
+                                <span class="value data">
+                                
+                                    10
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">x0</span>
+                                <span class="value data">
+                                
+                                    999999957
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">y0</span>
+                                <span class="value data">
+                                
+                                    79
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">a</span>
+                                <span class="value data">
+                                
+                                    993948167
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">b</span>
+                                <span class="value data">
+                                
+                                    24597383
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">c</span>
+                                <span class="value data">
+                                
+                                    212151897
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">d</span>
+                                <span class="value data">
+                                
+                                    999940854
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod1</span>
+                                <span class="value data">
+                                
+                                    999999986
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">mod2</span>
+                                <span class="value data">
+                                
+                                    999940855
+                                
+                                </span>
+                            </li>
+                        
+                            <li class="variable data">
+                                <span class="name data">offset</span>
+                                <span class="value data">
+                                
+                                    3404
+                                
+                                </span>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                    <div class="testcase-output">
+                        <div class='tag'>output</div>
+                        <span class="prefix data">Returns</span>
+                        <span class="value data">
+                        
+                            3
+                        
+                        </span>
+                    </div>
+                    
+                    <div class="testcase-annotation">
+                        <div class='tag'>note</div>
+                        <div class="testcase-comment">Watch out for integer overflow when generating the coordinates.</div>
+                    </div>
+                    
+               
+                </div>
+            </li>
+            
+        </ol>
+    </div>
+    <hr />
+
+    This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</body>
+</html>
