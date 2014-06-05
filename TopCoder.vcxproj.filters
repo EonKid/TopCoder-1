@@ -72,5 +72,8 @@
     <ClCompile Include="SRM 623\UniformBoard.cpp">
       <Filter>Source Files\SRM 623</Filter>
     </ClCompile>
+    <ClCompile Include="SRM 623\CatchTheBeat.cpp">
+      <Filter>Source Files\SRM 623</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
