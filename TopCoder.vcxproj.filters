@@ -13,67 +13,52 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\SRM 618">
-      <UniqueIdentifier>{e5e9a2ee-ce30-4d4a-a446-2a128f4f8024}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SRM 619">
-      <UniqueIdentifier>{13af0743-b286-49ed-a61d-52def1daed9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SRM 620">
-      <UniqueIdentifier>{8a183fa2-2cf5-4374-b6c1-b415dc88382d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TCO 2014 Round 1C">
-      <UniqueIdentifier>{21e214bd-5367-441e-9fce-a558441c99a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TCO 2014 Round 2A">
-      <UniqueIdentifier>{afb5f010-8491-49a5-8a7c-eb3c9f4517bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SRM 621">
-      <UniqueIdentifier>{d53a3b2b-d68d-4b4b-a2c3-5f8ae84a7e86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SRM 623">
-      <UniqueIdentifier>{e7c38225-7f40-426c-9dcf-118af05b8af7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SRM 618\Family.cpp">
-      <Filter>Source Files\SRM 618</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 618\LongWordsDiv1.cpp">
-      <Filter>Source Files\SRM 618</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 618\MovingRooksDiv1.cpp">
-      <Filter>Source Files\SRM 618</Filter>
-    </ClCompile>
-    <ClCompile Include="TCO 2014 Round 1C\FizzBuzzTurbo.cpp">
-      <Filter>Source Files\TCO 2014 Round 1C</Filter>
-    </ClCompile>
-    <ClCompile Include="TCO 2014 Round 1C\RedPaint.cpp">
-      <Filter>Source Files\TCO 2014 Round 1C</Filter>
-    </ClCompile>
-    <ClCompile Include="TCO 2014 Round 1C\Unique.cpp">
-      <Filter>Source Files\TCO 2014 Round 1C</Filter>
-    </ClCompile>
-    <ClCompile Include="SRM 619\SplitStoneGame.cpp">
-      <Filter>Source Files\SRM 619</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 619\GoodCompanyDivOne.cpp">
-      <Filter>Source Files\SRM 619</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 619\SplitStoneGame.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 620\PairGame.cpp">
-      <Filter>Source Files\SRM 620</Filter>
-    </ClCompile>
-    <ClCompile Include="TCO 2014 Round 2A\SixteenBricks.cpp">
-      <Filter>Source Files\TCO 2014 Round 2A</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 621\RadioRange.cpp">
-      <Filter>Source Files\SRM 621</Filter>
-    </ClCompile>
-    <ClCompile Include="SRM 623\UniformBoard.cpp">
-      <Filter>Source Files\SRM 623</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SRM 623\CatchTheBeat.cpp">
-      <Filter>Source Files\SRM 623</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 623\UniformBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 1C\FizzBuzzTurbo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 1C\RedPaint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 1C\Unique.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 2A\SixteenBricks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 2B\SumAndProductPuzzle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2014 Round 2B\SwitchingGame.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
