@@ -60,5 +60,11 @@
     <ClCompile Include="TCO 2014 Round 2B\SwitchingGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SRM 630\Egalitarianism3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SRM 630\SuffixArrayDiv1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
