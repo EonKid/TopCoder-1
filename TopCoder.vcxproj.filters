@@ -66,5 +66,11 @@
     <ClCompile Include="SRM 630\SuffixArrayDiv1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TCO 2015 Round 1B\TheNicePair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TCO 2015 Round 1B\TheTips.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
